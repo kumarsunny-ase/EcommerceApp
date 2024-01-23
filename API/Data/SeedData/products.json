@@ -1,0 +1,35 @@
+[
+    {
+        "Name": "Angular Speedster Board 2000",
+        "Description": "It's important to know that the customer is the customer. Maecenas airline planning mass. To put it on the bed, a large but ultricie pillow, a pure white bed",
+         "price": 200,
+         "PictureUrl": "images/products/sb-ang1.png",
+         "ProductTypeId": 1,
+         "ProductBrandId": 1
+    },
+    {
+      "Name": "Blue Angular Desk",
+      "Description": "Ensure productivity with this stylish blue angular desk. Maecenas airline planning mass. A spacious but ergonomic design for maximum comfort.",
+      "Price": 250,
+      "PictureUrl": "images/products/sb-ang2.png",
+      "ProductTypeId": 2,
+      "ProductBrandId": 2
+    },
+    {
+      "Name": "Red Compact Chair",
+      "Description": "Elevate your workspace with this vibrant red compact chair. Maecenas airline planning mass. A perfect blend of style and functionality for your office.",
+      "Price": 120,
+      "PictureUrl": "images/products/sb-redchair.png",
+      "ProductTypeId": 3,
+      "ProductBrandId": 1
+    },
+    {
+      "Name": "Gray Standing Desk",
+      "Description": "Optimize your work setup with this modern gray standing desk. Maecenas airline planning mass. A versatile solution for a healthy and productive work environment.",
+      "Price": 300,
+      "PictureUrl": "images/products/sb-standingdesk.png",
+      "ProductTypeId": 4,
+      "ProductBrandId": 2
+    }
+
+]
