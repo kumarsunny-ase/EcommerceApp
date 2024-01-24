@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Models;
+using API.Models.DTOs;
+using AutoMapper;
 using EcommerceAPI.Models;
 using EcommerceAPI.Repositories.Implementation.Interface;
 using Microsoft.AspNetCore.Mvc;
@@ -14,28 +16,29 @@ namespace EcommerceAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository productRepository)
+        public ProductsController(IProductRepository productRepository, IMapper mapper)
         {
+            _mapper = mapper;
             _productRepository = productRepository;
 
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> GetProducts()
+        public async Task<ActionResult<List<ProductDto>>> GetProducts()
         {
             var products = await _productRepository.GetAllAsync();
-
-            return Ok(products);
+            
+            return _mapper.Map<List<Product>, List<ProductDto>>(products);
         }
 
         [HttpGet("{id}")]
-
-        public async Task<ActionResult<Product>> GetProduct(int id)
+        public async Task<ActionResult<ProductDto>> GetProduct(int id)
         {
-            var product = await _productRepository.GetById(id);
+            var product = await _productRepository.GetByIdAsync(id);
 
-            return Ok(product);
+           return _mapper.Map<Product, ProductDto>(product);
         }
 
         [HttpGet("brands")]

@@ -26,9 +26,12 @@ namespace EcommerceAPI.Repositories.Implementation
             .ToListAsync();
         }
 
-        public async Task<Product> GetById(int id)
+        public async Task<Product> GetByIdAsync(int id)
         {
-            return await _storeContext.Products.FirstOrDefaultAsync(x => x.Id == id);
+            return await _storeContext.Products
+            .Include(p => p.ProductType)
+            .Include(p => p.ProductBrand)
+            .FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<IReadOnlyList<ProductBrand>> GetAllProductBrandsAsync()
@@ -40,5 +43,6 @@ namespace EcommerceAPI.Repositories.Implementation
         {
             return await _storeContext.ProductTypes.ToListAsync();
         }
+       
     }
 }

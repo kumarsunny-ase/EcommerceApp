@@ -1,4 +1,5 @@
-﻿using EcommerceAPI.Data;
+﻿using API.Helpers;
+using EcommerceAPI.Data;
 using EcommerceAPI.Repositories.Implementation;
 using EcommerceAPI.Repositories.Implementation.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -17,6 +18,7 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddAutoMapper(typeof(MappingProfiles));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -27,6 +29,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 
