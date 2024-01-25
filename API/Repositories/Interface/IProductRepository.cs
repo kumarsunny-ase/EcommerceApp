@@ -9,7 +9,7 @@ namespace EcommerceAPI.Repositories.Implementation.Interface
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetAllAsync();
+        Task<List<Product>> GetAllAsync(string sort, int? brandId, int? typeId);
         Task<Product> GetByIdAsync(int id);
         Task<IReadOnlyList<ProductBrand>>GetAllProductBrandsAsync();
         Task<IReadOnlyList<ProductType>>GetAllProductTypesAsync();

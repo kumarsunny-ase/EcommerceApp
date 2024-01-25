@@ -18,12 +18,31 @@ namespace EcommerceAPI.Repositories.Implementation
             _storeContext = storeContext;
         }
 
-        public async Task<List<Product>> GetAllAsync()
+        public async Task<List<Product>> GetAllAsync(string sort, int? brandId, int? typeId)
         {
-            return await _storeContext.Products
+            IQueryable<Product> query = _storeContext.Products
             .Include(p => p.ProductBrand)
-            .Include(p => p.ProductType)
-            .ToListAsync();
+            .Include(p => p.ProductType);
+
+            if (!string.IsNullOrEmpty(sort))
+            {
+                switch(sort)
+                {
+                    case "priceAsc":
+                        query = query.OrderBy(p => (double)p.Price);
+                        break;
+                    case "priceDesc":
+                        query = query.OrderByDescending(p => (double)p.Price);
+                        break;
+                    default:
+                        query = query.OrderBy(n => n.Name);
+                        break;
+                }
+            }
+            query = query.Where(x=> (!brandId.HasValue || x.ProductBrandId == brandId) && 
+                (!typeId.HasValue || x.ProductTypeId == typeId));
+
+            return await query.ToListAsync();           
         }
 
         public async Task<Product> GetByIdAsync(int id)

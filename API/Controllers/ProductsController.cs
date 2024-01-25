@@ -26,10 +26,10 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts()
+        public async Task<ActionResult<List<ProductDto>>> GetProducts(string sort, int? brandId, int? typeId)
         {
-            var products = await _productRepository.GetAllAsync();
-            
+            var products = await _productRepository.GetAllAsync(sort, brandId, typeId);
+
             return _mapper.Map<List<Product>, List<ProductDto>>(products);
         }
 
@@ -38,7 +38,7 @@ namespace EcommerceAPI.Controllers
         {
             var product = await _productRepository.GetByIdAsync(id);
 
-           return _mapper.Map<Product, ProductDto>(product);
+            return _mapper.Map<Product, ProductDto>(product);
         }
 
         [HttpGet("brands")]
