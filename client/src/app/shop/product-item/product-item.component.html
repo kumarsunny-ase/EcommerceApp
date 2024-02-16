@@ -1,0 +1,18 @@
+<div class="card h-100 shadow">
+    <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="card-img-top bg-info">
+    <div class="card-body d-flex flex-column">
+        <a href="#" class="text-decoration-none">
+            <h6 class="card-title text-uppercase">{{product.name}}</h6>
+        </a>
+        <p class="card-text mb-2">{{product.price | currency}}</p>
+        <div class="d-flex mt-auto">
+            <button type="button" class="btn btn-outline-secondary cart-button me-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor"
+                        d="M9 18c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm9 0c0 1.657-1.343 3-3 3s-3-1.343-3-3 1.343-3 3-3 3 1.343 3 3zm4-12H6.702L5.648 2.633C5.557 2.243 5.208 2 4.8 2H2v2h2.187l2.608 9.623c-.335.17-.605.448-.784.801h-.001a.991.991 0 00-.041.091l-.074.166c-.126.276-.246.615-.364 1.017H4v2h2.187c-.156.631-.187 1.347-.187 2h14c0-.653-.031-1.369-.187-2H20v-2h-2.187c-.118-.402-.238-.741-.364-1.017l-.075-.166c-.013-.029-.03-.064-.045-.101a.977.977 0 00-.039-.091h-.001c-.179-.353-.449-.631-.784-.801L17.813 4H20V2zm-5 15c-2.071 0-3.834-1.256-4.603-3h9.206c-.769 1.744-2.532 3-4.603 3z" />
+                </svg>
+            </button>
+            <button type="button" class="btn btn-outline-secondary">View</button>
+        </div>
+    </div>
+</div>

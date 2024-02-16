@@ -18,7 +18,7 @@ namespace EcommerceAPI.Repositories.Implementation
             _storeContext = storeContext;
         }
 
-        public async Task<List<Product>> GetAllAsync(string sort, int? brandId, int? typeId)
+        public async Task<List<Product>> GetAllAsync( string sort, int? brandId, int? typeId, string searchString)
         {
             IQueryable<Product> query = _storeContext.Products
             .Include(p => p.ProductBrand)
@@ -39,6 +39,13 @@ namespace EcommerceAPI.Repositories.Implementation
                         break;
                 }
             }
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                string searchLower = searchString.ToLower();
+                query = query.Where(p => p.Name.ToLower().Contains(searchLower));
+            }
+
             query = query.Where(x=> (!brandId.HasValue || x.ProductBrandId == brandId) && 
                 (!typeId.HasValue || x.ProductTypeId == typeId));
 

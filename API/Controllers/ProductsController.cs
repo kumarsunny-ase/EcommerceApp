@@ -26,9 +26,9 @@ namespace EcommerceAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> GetProducts(string sort, int? brandId, int? typeId)
+        public async Task<ActionResult<List<ProductDto>>> GetProducts(string sort, int? brandId, int? typeId, string searchString)
         {
-            var products = await _productRepository.GetAllAsync(sort, brandId, typeId);
+            var products = await _productRepository.GetAllAsync(sort, brandId, typeId, searchString);
 
             return _mapper.Map<List<Product>, List<ProductDto>>(products);
         }
